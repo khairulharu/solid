@@ -24,3 +24,15 @@ func (l *Lemari) MasukkanBaju(baju interface{}, nama string, rak int) {
 	l.Rak = rak
 }
 ```
+
+Pada Penggunaan Strutc Lemari Seperti ini
+```go
+
+func main() {
+	lemariAnton := LemariBaru()
+	//Lemari anton hanya boleh memasukkan baju ke dalam sebuah lemari
+	lemariAnton.MasukkanBaju("louis vuitton", "lemari anton", 1)
+
+	fmt.Println(lemariAnton.IsiLemari)
+}
+```
