@@ -1,11 +1,15 @@
-Belajar SOLID principle 
+# Belajar SOLID principle 
 
 Single Responsibilty Principle 
 
-Jadi solid principle hanya memiliki sebuah method tunggal agar struct nya berubah.
+Jadi Single Responsibility Principle hanya memiliki sebuah method tunggal agar struct nya berubah,
+Seperti namanya single, hanya memiliki satu buah cara agar si struct atau class nya berubah,
+Struct nya tidak harus berubah, bisa saja method itu hanya mengembalikan sebuah nilai tapi dengan catatan,
+Hanya boleh memiliki satu fungsional atau kegunaan saja.
 
 Pada Struct Lemari Memiliki Method Masukkan Baju 
 Spertin inlah cara penggunakan SOLid Principle yang hanya memiliki satu fungsi agar bisa berubah
+Contoh penggunaan SRP pada struct Lemari
 ```go
 // Lemari struct merepensetasikan sebuah Lemari yang sergin kita temukan di rumah
 type Lemari struct {
