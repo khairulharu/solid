@@ -45,10 +45,61 @@ func main() {
 OCP
 Open Close Principle
 
-Terbuka untuk menambahkan service baru tetapi tertutup untuk merubah codingan yang sudah di buat 
+Terbuka untuk menambahkan service baru tetapi tertutup untuk merubah codingan yang sudah di buat.
+
+Pada saat notification.SendNotification() maka akan me manggil sesuai dengan apa yang di masukkan pada struct tersebut jika Email maka akan return email, begitupun dengan Cart 
+
+
+Sebagai interface untuk semua tipe implementasi yang ada
+```go
+
+type NotificationService interface {
+	SendNotification(message *string) (*string, error)
+}
+
+```
+
+Email Notification Service
+
+```go
+type EmailNotificationService struct{}
+
+func (e *EmailNotificationService) SendNotification(message *string) (*string, error) {
+
+	fmt.Printf("Email Notifcation: %s \n", *message)
+	return nil, nil
+}
+
+```
+
+Cart Notifcation Service 
+```go
+
+type CartNotificationService struct{}
+
+func (c *CartNotificationService) SendNotification(message *string) (*string, error) {
+	fmt.Printf("Cart Notifcation: %s \n", *message)
+	return nil, nil
+}
+
+
+```
+
+SendNotification struct bertugas sebagai perantara untuk pengiriman segala NotifcationService.SendNotification
+```go
+type NotificationSender struct {
+	notificationService NotificationService
+}
+
+func (n *NotificationSender) SendNotification(message *string) (*string, error) {
+	return n.notificationService.SendNotification(message)
+}
+
+```
 
 ```go
 
+func main(){
 //Buat variable untuk message yang akan di kirim
 	message := "HALO"
 
@@ -76,4 +127,5 @@ Terbuka untuk menambahkan service baru tetapi tertutup untuk merubah codingan ya
 	//Memnaggil untuk print Message
 	notificationService.SendNotification(&message)
 	// Cart Notifcation: HALO
+}
 ```
