@@ -1,23 +1,31 @@
 package main
 
-import (
-	"errors"
-)
+func main() {
+	//Buat variable untuk message yang akan di kirim
+	message := "HALO"
 
-type NotificationService interface {
-	SendNotification(message string) (string, error)
-}
+	//inisiate struct EmailNotificationService yang sudah mengimplementasi interface Notification
+	emailNotificationService := &EmailNotificationService{}
 
-type EmailNotificationService struct{}
+	//Cart juga sudah memiliki method yang sama pada interface  Notification
+	cartNotficationService := &CartNotificationService{}
 
-func (e *EmailNotificationService) SendNotification(massage *string) (*string, error) {
-	if massage != nil {
-		return massage, nil
-	}
+	//kita Panggil Struct Notification Service yang berisi interface tadi
+	//Dan pada bagian notificaionService diisi dengan emailNotificationService
+	notificationService := &NotificationSender{notificationService: emailNotificationService}
 
-	return nil, errors.New("no message")
-}
+	//Sekarang notification service akan berisi emailNotificationservice
+	notificationService.SendNotification(&message)
+	//Output yang di keluarkan "Email Notifcation: HALO"
 
-func NewEmailNotificationService() *EmailNotificationService {
-	return &EmailNotificationService{}
+	//Pada saat Seperti ini kita tidak harus Menginisiate ulang Notification Service karena kenapa?
+	//KArena cart Notification memiliki method ynag sama jadi kita hanya harus mengubah
+	//notificationSerivce pada struct nya, tanpa harus mengubah keseluruhan kode
+	//JIka pada saat nanti ingin membuat Service baru dengan contoh
+	//MessageNotifcaionService dia hanya perlu implement interface NotificationService
+	notificationService.notificationService = cartNotficationService
+
+	//Memnaggil untuk print Message
+	notificationService.SendNotification(&message)
+	// Cart Notifcation: HALO
 }
