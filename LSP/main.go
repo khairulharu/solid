@@ -7,8 +7,8 @@ import "fmt"
 
 // Kita menggunakan perumpaan paket sebagai interface untuk mewaliki semua tipe jasa kirim
 type Paket interface {
-	Kirim()
-	HitungHarga()
+	Kirim() string
+	HitungHarga() int64
 }
 
 // Contoh Provider Jne
@@ -18,18 +18,19 @@ type JNE struct {
 }
 
 // Implementasi methos Kirim
-func (j *JNE) Kirim() {
+func (j *JNE) Kirim() string {
 	j.StatusPaketDikirim = true
+
 	if j.StatusPaketDikirim {
-		fmt.Println("Paket Sudah Dikirim")
+		return fmt.Sprint("Paket Sudah Dikirim")
 	}
 
-	fmt.Println("PaketBelumDikirim")
+	return fmt.Sprint("PaketBelumDikirim")
 }
 
 // Implementasi methos HitungHarga pada Interface Paket
-func (j *JNE) HitungHarga() {
-	fmt.Println(j.Berat * 5000)
+func (j *JNE) HitungHarga() int64 {
+	return j.Berat * 7000
 }
 
 // Contoh Di Provider Sicepat
@@ -39,25 +40,25 @@ type Sicepat struct {
 }
 
 // Implementasi method Kirim
-func (s *Sicepat) Kirim() {
+func (s *Sicepat) Kirim() string {
 	s.StatusPaketDikirim = true
 	if s.StatusPaketDikirim {
-		fmt.Println("Paket Sudah Dikirim")
+		return fmt.Sprint("Paket Sudah Dikirim")
 	}
 
-	fmt.Println("PaketBelumDikirim")
+	return fmt.Sprintf("PaketBelumDikirim")
 }
 
 // Implementasi Method HitungHarga
-func (s *Sicepat) HitungHarga() {
-	fmt.Println(s.Berat * 7000)
+func (s *Sicepat) HitungHarga() int64 {
+	return s.Berat * 7000
 }
 
 // Disini kegunaan conthoh kegunaan liskov subsitution Principle
 // Sebuah struct hanya perlu mengimplementasi sebuah interface agar bisa di print
 func PrintStatusDanHarga(p Paket) {
-	p.HitungHarga()
-	p.Kirim()
+	fmt.Println("Harga: ", p.HitungHarga())
+	fmt.Println("Status Pengiriman: ", p.Kirim())
 }
 func main() {
 	//Inisiate Sebuah variable Denga Struct JNE
