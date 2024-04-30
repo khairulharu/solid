@@ -47,7 +47,7 @@ Open Close Principle
 
 Terbuka untuk menambahkan service baru tetapi tertutup untuk merubah codingan yang sudah di buat.
 
-Pada saat notification.SendNotification() maka akan me manggil sesuai dengan apa yang di masukkan pada struct tersebut jika Email maka akan return email, begitupun dengan Cart 
+Pada saat notification.SendNotification() dipanggil, maka akan me manggil sesuai dengan apa yang di masukkan pada struct tersebut jika Email maka akan return email, begitupun dengan Cart 
 
 
 Sebagai interface untuk semua tipe implementasi yang ada
