@@ -12,7 +12,7 @@ type WantArabica interface {
 	Arabica()
 }
 
-type WanRobusta interface {
+type WantRobusta interface {
 	Robusta()
 }
 
@@ -36,14 +36,14 @@ func IWantArabica(a Arabica) {
 	a.Arabica()
 }
 
-func IWantRobustaAndArabica(c Coffe, a WantArabica) {
-	c.Robusta()
-	a.Arabica()
+func IWantRobustaAndArabica(robusta WantRobusta, arabica WantArabica) {
+	robusta.Robusta()
+	arabica.Arabica()
 }
 
 func main() {
 	arabica := Arabica{}
 	robusta := Robusta{}
 
-	IWantArabica(arabica)
+	IWantArabica()
 }
