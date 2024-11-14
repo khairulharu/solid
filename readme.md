@@ -133,3 +133,4 @@ func main(){
 "nnooael"
 "mode push otomatis"
 "dua"
+"three"
