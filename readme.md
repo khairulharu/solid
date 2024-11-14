@@ -134,3 +134,4 @@ func main(){
 "mode push otomatis"
 "dua"
 "three"
+"four"
