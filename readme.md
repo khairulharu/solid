@@ -132,3 +132,4 @@ func main(){
 "belajar lagi bang"
 "nnooael"
 "mode push otomatis"
+"dua"
