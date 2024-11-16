@@ -138,5 +138,4 @@ func main(){
 ""five
 
 "auto commit"
-"integration commit"
 "leadmics"
