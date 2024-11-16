@@ -140,3 +140,4 @@ func main(){
 "auto commit"
 "leadmics"
 ;;;
+"""ini juga
